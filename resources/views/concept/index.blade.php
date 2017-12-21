@@ -6,7 +6,7 @@
             <tr>
                 <td>{{$concept->id}}</td>
                 <td>
-                    <a href="{{route('concepts.{concept}.records.index',['concept'=>$concept->id])}}">{{$concept->name}}</a>
+                    <a href="{{route('concepts.records.index',['concept'=>$concept->id])}}">{{$concept->name}}</a>
                 </td>
                 <td>{{$concept->parent_id}}</td>
                 <td>{{$concept->mustbezero}}</td>
