@@ -1,58 +1,75 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## Laravel 5.5 audit example ##
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+**Laravel 5-5 audit example** is an example application.
 
-## About Laravel
+### Installation ###
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+* type `git clone https://github.com/sflyrmktg/laravel-audit.git projectname` to clone the repository 
+* type `cd projectname`
+* type `composer install`
+* type `composer update`
+* copy *.env.example* to *.env*
+* type `php artisan key:generate`to generate secure key in *.env* file
+* if you use MySQL in *.env* file :
+   * set DB_CONNECTION
+   * set DB_DATABASE
+   * set DB_USERNAME
+   * set DB_PASSWORD
+* if you use sqlite :
+   * type `touch database/database.sqlite` to create the file
+* type `php artisan migrate --seed` to create and populate tables
+* edit *.env* for emails configuration
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Include ###
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+* [Styleshout](https://www.styleshout.com/) for front template
+* [CKEditor](http://ckeditor.com) the great editor
+* [Elfinder](https://github.com/Studio-42/elFinder) the nice file manager
+* [Sweat Alert](http://t4t5.github.io/sweetalert/) for the cool alerts
+* [AdminLTE](https://adminlte.io/themes/AdminLTE/index2.html) the great admin template
+* [Gravatar](https://github.com/creativeorange/gravatar) the Gravatar package
+* [Intervention Image](http://image.intervention.io/) for image manipulation
+* [Email confirmation](https://github.com/bestmomo/laravel-email-confirmation) the package for email confirmation
+* [Artisan language](https://github.com/bestmomo/laravel-artisan-language) the package for language strings management
+* [Laravel debugbar](https://github.com/barryvdh/laravel-debugbar)
+* [Etrepat baum](https://github.com/etrepat/baum) for comments management
 
-## Learning Laravel
+### Features ###
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+* Home page
+* Custom error pages 403, 404 and 503
+* Authentication (registration, login, logout, password reset, mail confirmation, throttle)
+* Users roles : administrator (all access), redactor (create and edit post, upload and use medias in personnal directory), and user (create comment in blog)
+* Blog with nested comments
+* Search in posts
+* Tags on posts
+* Contact us page
+* Admin dashboard with users, posts, articles, medias, settings, notifications and comments
+* Multi users medias gestion
+* Localization (English, French and Chinese)
+* Application tests
+* Thumbs creation for images
+* Notifications to send emails and notify redactors for new comments
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+### Tricks ###
 
-## Laravel Sponsors
+To use application the database is seeding with users :
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+* Administrator : email = admin@la.fr, password = admin
+* Redactor : email = redac@la.fr, password = redac
+* User : email = walker@la.fr, password = walker
+* User : email = slacker@la.fr, password = slacker
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
+### Tests ###
 
-## Contributing
+When you want to launch the tests refresh and populate the database :
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+`php artisan migrate:fresh --seed`
 
-## Security Vulnerabilities
+You must have default settings and **en** language. You must also add provider in **config/app.php**.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+You can then use Dusk.
 
-## License
+### License ###
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+This example for Laravel is open-sourced software licensed under the MIT license

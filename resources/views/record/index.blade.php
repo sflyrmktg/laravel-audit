@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Records CRUD</h2>
+                <h2>{{$viewName}}</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('records.create') }}"> Create New Record</a>
@@ -40,18 +40,16 @@
                         <a name="clone" class="btn btn-warning btn-xs">C</a>
                         <button name="validate" class="btn btn-default btn-xs"
                                 value="{{$record->isvalid}}">{{($record->isvalid == 1)?'I':'V'}}</button>
-                    <!--a class="btn btn-info btn-xs" href="{{ route('records.show',$record->id) }}">S</a/-->
-                    <!--a class="btn btn-primary btn-xs" href="{{ route('records.edit',$record->id) }}">E</a/-->
                         <a name="delete" class="btn btn-danger btn-xs">D</a>
                     </span>
                 </td>
                 <td data-name="made_at">{{$record->made_at}}</td>
                 @if($view=='method')
-                    <td><a href=href="{{route('concepts.{concept}.records.index',['concept'=>$record->concept_id])}}"
+                    <td><a href="{{route('concepts.records.index',['concept'=>$record->concept_id])}}"
                            target="concept">{{$record->concept->name}}</a></td>
                 @endif
                 @if($view=='concept')
-                    <td><a href=href="{{route('methods.{method}.records.index',['method'=>$record->method_id])}}"
+                    <td><a href="{{route('methods.records.index',['method'=>$record->method_id])}}"
                            target="method">{{$record->method->name}}</a></td>
                 @endif
                 <td data-name="explanation">{{$record->explanation}}</td>

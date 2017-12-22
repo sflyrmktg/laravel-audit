@@ -12,19 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('methods', 'MethodController@index')->name('methods.index');
+Route::get('methods/{method}', 'RecordController@indexMethod')->name('methods.records.index');
+
+Route::get('concepts', 'ConceptController@index')->name('concepts.index');
+Route::get('concepts/{concept}', 'RecordController@indexConcept')->name('concepts.records.index');
+
+
+
 Route::resource('records', 'RecordController');
 Route::post('records/partialupdate', array('as' => 'records.partialupdate', 'uses' => 'RecordController@partialUpdate'));
 Route::post('records/clone', array('as' => 'records.clone', 'uses' => 'RecordController@clone'));
-
-Route::resource('methods','MethodController');
-Route::resource('methods/{method}/records','RecordController@indexMethod');
-
-Route::resource('concepts','ConceptController');
-Route::resource('concepts/{concept}/records','RecordController@indexConcept');
