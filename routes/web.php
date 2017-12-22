@@ -25,6 +25,8 @@ Route::get('methods/{method}', 'RecordController@indexMethod')->name('methods.re
 Route::get('concepts', 'ConceptController@index')->name('concepts.index');
 Route::get('concepts/{concept}', 'RecordController@indexConcept')->name('concepts.records.index');
 
+Route::post('records/clone', 'RecordController@clone')->name('record.clone');
+
 
 
 Route::resource('records', 'RecordController');

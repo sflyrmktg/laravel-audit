@@ -175,7 +175,8 @@
                         var attr = $(this).attr('data-name');
                         if (attr) {
                             $(this).html('<input name="' + attr + '" value="' + $(this).text() + '" />');
-                            $('input').change(function () {
+                            $('input:text').change(function (e) {
+                                e.stopImmediatePropagation();
                                 var $tr = $(this).parent().parent();
                                 var params = {'id': $tr.attr('id')};
                                 params[$(this).attr('name')] = $(this).val();
